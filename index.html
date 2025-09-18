@@ -13,9 +13,33 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #eee, transparent),
+                linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+            background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100% 100%;
+            background-attachment: fixed;
             min-height: 100vh;
-            color: #333;
+            color: #e0e6ed;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .container {
@@ -26,9 +50,10 @@
 
         .header {
             text-align: center;
-            color: white;
+            color: #ffffff;
             margin-bottom: 40px;
             padding: 40px 0;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
         .header h1 {
@@ -51,43 +76,49 @@
         }
 
         .menu-card {
-            background: white;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 30px;
             width: 350px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 3px solid transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .menu-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
-            border-color: #667eea;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.4), 0 0 30px rgba(120, 219, 255, 0.3);
+            border-color: #78dbff;
+            background: linear-gradient(145deg, rgba(120, 219, 255, 0.2), rgba(120, 119, 198, 0.1));
         }
 
         .menu-card.active {
-            border-color: #667eea;
+            border-color: #78dbff;
             transform: translateY(-5px);
+            background: linear-gradient(145deg, rgba(120, 219, 255, 0.15), rgba(120, 119, 198, 0.08));
         }
 
         .menu-card h3 {
-            color: #667eea;
+            color: #78dbff;
             margin-bottom: 15px;
             font-size: 1.5em;
+            text-shadow: 0 0 10px rgba(120, 219, 255, 0.5);
         }
 
         .menu-card p {
-            color: #666;
+            color: #e0e6ed;
             line-height: 1.6;
         }
 
         .problem-container {
-            background: white;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 40px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             display: none;
         }
 
@@ -109,26 +140,35 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #333;
+            color: #e0e6ed;
         }
 
         .input-group input {
             width: 100%;
             padding: 12px;
-            border: 2px solid #ddd;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 8px;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e6ed;
+            backdrop-filter: blur(5px);
         }
 
         .input-group input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #78dbff;
+            box-shadow: 0 0 15px rgba(120, 219, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .input-group input::placeholder {
+            color: rgba(224, 230, 237, 0.6);
         }
 
         .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #78dbff 0%, #7877c6 50%, #ff77c6 100%);
+            color: #0c0c0c;
             padding: 15px 30px;
             border: none;
             border-radius: 8px;
@@ -137,52 +177,98 @@
             cursor: pointer;
             transition: all 0.3s;
             margin: 10px 5px;
+            box-shadow: 0 4px 15px rgba(120, 219, 255, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(120, 219, 255, 0.5), 0 0 20px rgba(255, 119, 198, 0.3);
+            background: linear-gradient(135deg, #8ee5ff 0%, #8887d6 50%, #ff87d6 100%);
         }
 
         .results {
-            background: #f8f9fa;
+            background: linear-gradient(145deg, rgba(120, 219, 255, 0.1), rgba(255, 119, 198, 0.05));
+            backdrop-filter: blur(5px);
             border-radius: 8px;
             padding: 20px;
             margin-top: 20px;
-            border-left: 5px solid #667eea;
+            border-left: 5px solid #78dbff;
+            border: 1px solid rgba(120, 219, 255, 0.3);
         }
 
         .results h4 {
-            color: #667eea;
+            color: #78dbff;
             margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(120, 219, 255, 0.5);
         }
 
         .result-item {
             margin-bottom: 10px;
             padding: 8px;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 5px;
+            color: #e0e6ed;
         }
 
         .error-analysis {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
+            background: linear-gradient(145deg, rgba(255, 119, 198, 0.1), rgba(120, 219, 255, 0.05));
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 119, 198, 0.3);
             border-radius: 8px;
             padding: 15px;
             margin-top: 15px;
+            color: #e0e6ed;
+        }
+
+        .problem-description {
+            background: linear-gradient(145deg, rgba(255, 119, 198, 0.1), rgba(120, 219, 255, 0.05));
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 119, 198, 0.3);
+            color: #e0e6ed;
+        }
+
+        .problem-description h3 {
+            color: #78dbff;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            text-shadow: 0 0 10px rgba(120, 219, 255, 0.5);
+        }
+
+        .problem-description p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .problem-description ul {
+            margin: 10px 0 15px 20px;
+        }
+
+        .problem-description li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .problem-description strong {
+            color: #ff77c6;
         }
 
         .formula {
-            background: #e3f2fd;
+            background: linear-gradient(145deg, rgba(120, 219, 255, 0.1), rgba(120, 119, 198, 0.05));
+            backdrop-filter: blur(5px);
             border-radius: 8px;
             padding: 15px;
             margin: 15px 0;
             font-family: 'Courier New', monospace;
-            border-left: 4px solid #2196f3;
+            border-left: 4px solid #78dbff;
+            color: #e0e6ed;
+            border: 1px solid rgba(120, 219, 255, 0.3);
         }
 
         .back-btn {
-            background: #6c757d;
+            background: linear-gradient(135deg, #7877c6 0%, #533483 100%);
             margin-bottom: 20px;
         }
 
@@ -207,18 +293,18 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🧮 Propagación del Error</h1>
+            <h1>Propagación del Error</h1>
             <p>Métodos Numéricos I - Análisis de Errores en Problemas Aplicados</p>
         </div>
 
         <!-- Menú Principal -->
         <div id="menu" class="menu-container">
             <div class="menu-card" onclick="showProblem('carbon')">
-                <h3>🏺 Problema 32: Datación por Carbono-14</h3>
+                <h3>Problema 32: Datación por Carbono-14</h3>
                 <p>Análisis de propagación del error en la estimación de la edad de material orgánico usando decaimiento radiactivo exponencial. Determinaremos la edad de una huella encontrada en Acahualtinca, Nicaragua.</p>
             </div>
             <div class="menu-card" onclick="showProblem('newton')">
-                <h3>🌡️ Problema 36: Ley de Enfriamiento de Newton</h3>
+                <h3>Problema 36: Ley de Enfriamiento de Newton</h3>
                 <p>Aplicación de propagación del error en la determinación del tiempo de muerte usando la ley de enfriamiento. Resolveremos un caso forense con mediciones de temperatura corporal.</p>
             </div>
         </div>
@@ -226,7 +312,30 @@
         <!-- Problema del Carbono-14 -->
         <div id="carbon-problem" class="problem-container">
             <button class="btn back-btn" onclick="showMenu()">← Volver al Menú</button>
-            <h2>🏺 Problema 32: Datación por Carbono-14</h2>
+            <h2>Problema 32: Datación por Carbono-14</h2>
+            
+            <div class="problem-description">
+                <h3>Enunciado del Problema:</h3>
+                <p><strong>Radioactive decay of carbon-14 is used for estimating the age of organic material.</strong></p>
+                <p>El decaimiento radiactivo del carbono-14 se usa para estimar la edad del material orgánico. El decaimiento se modela mediante la función exponencial:</p>
+                <div class="formula">
+                    <strong>f(t) = f(0)e^(kt)</strong>
+                </div>
+                <p>Donde:</p>
+                <ul>
+                    <li><strong>t:</strong> tiempo</li>
+                    <li><strong>f(0):</strong> cantidad de material en t=0</li>
+                    <li><strong>f(t):</strong> cantidad de material en el tiempo t</li>
+                    <li><strong>k:</strong> constante</li>
+                </ul>
+                <p><strong>Datos del problema:</strong></p>
+                <ul>
+                    <li>La vida media del carbono-14 es aproximadamente 5,730 años</li>
+                    <li>Una muestra de las huellas antiguas de Acahualinca en Nicaragua muestra que el 77.45% del carbono-14 inicial (t=0) aún está presente</li>
+                    <li>Esto significa que f(t) = 0.7745 × f(0)</li>
+                </ul>
+                <p><strong>Tarea:</strong> Determinar la edad estimada de la huella. Resuelva escribiendo un programa que primero determine la constante k, luego calcule t para f(t) = 0.7745 × f(0), y finalmente redondee la respuesta al año más cercano.</p>
+            </div>
             
             <div class="formula">
                 <strong>Modelo Exponencial:</strong> f(t) = f(0)e^(-kt)<br>
@@ -260,36 +369,58 @@
         <!-- Problema de Newton -->
         <div id="newton-problem" class="problem-container">
             <button class="btn back-btn" onclick="showMenu()">← Volver al Menú</button>
-            <h2>🌡️ Problema 36: Ley de Enfriamiento de Newton</h2>
+            <h2>Problema 36: Ley de Enfriamiento de Newton</h2>
+            
+            <div class="problem-description">
+                <h3>Enunciado del Problema:</h3>
+                <p><strong>Newton's law of cooling gives the temperature T(t) of an object at time t in terms of T0, its temperature at t=0, and Ts, the temperature of the surroundings.</strong></p>
+                <p>La ley de enfriamiento de Newton da la temperatura T(t) de un objeto en el tiempo t en términos de T0, su temperatura en t=0, y Ts, la temperatura del entorno.</p>
+                <div class="formula">
+                    <strong>T(t) = Ts + (T0 - Ts)e^(-kt)</strong>
+                </div>
+                <p><strong>Caso Forense:</strong></p>
+                <p>Un oficial de policía llega a la escena del crimen en una habitación de hotel a las 9:18 PM y encuentra un cadáver.</p>
+                <p><strong>Mediciones realizadas:</strong></p>
+                <ul>
+                    <li><strong>Inmediatamente (a las 9:18 PM):</strong> La temperatura corporal es de 79.5°F</li>
+                    <li><strong>Exactamente una hora después (a las 10:18 PM):</strong> La temperatura corporal es de 78.0°F</li>
+                </ul>
+                <p><strong>Suposiciones:</strong></p>
+                <ul>
+                    <li>Temperatura normal del cuerpo de la víctima antes de la muerte: 98.6°F</li>
+                    <li>Temperatura de la habitación (Ts): constante a 69°F</li>
+                </ul>
+                <p><strong>Tarea:</strong> Determinar el tiempo de muerte aplicando la ley de enfriamiento de Newton y analizar la propagación del error en los cálculos.</p>
+            </div>
             
             <div class="formula">
                 <strong>Ley de Newton:</strong> T(t) = Ts + (T0 - Ts)e^(-kt)<br>
-                <strong>Caso:</strong> T0 = 98.6°F, T(1h) = 79.5°F, T(2h) = 78.0°F, Ts = 69°F
+                <strong>Caso:</strong> T_normal = 98.6°F, T(0) = 79.5°F (9:18 PM), T(1) = 78.0°F (10:18 PM), Ts = 69°F
             </div>
 
             <div class="grid">
                 <div class="input-group">
-                    <label>Temperatura inicial T0 (°F):</label>
+                    <label>Temperatura normal del cuerpo T_normal (°F):</label>
                     <input type="number" id="newton-t0" value="98.6" step="0.1">
                 </div>
                 <div class="input-group">
-                    <label>Error en T0 (±°F):</label>
+                    <label>Error en T_normal (±°F):</label>
                     <input type="number" id="newton-t0-error" value="0.2" step="0.01">
                 </div>
                 <div class="input-group">
-                    <label>Temperatura 1h después (°F):</label>
+                    <label>Temperatura a las 9:18 PM T(0) (°F):</label>
                     <input type="number" id="newton-t1" value="79.5" step="0.1">
                 </div>
                 <div class="input-group">
-                    <label>Error en T(1h) (±°F):</label>
+                    <label>Error en T(0) (±°F):</label>
                     <input type="number" id="newton-t1-error" value="0.1" step="0.01">
                 </div>
                 <div class="input-group">
-                    <label>Temperatura 2h después (°F):</label>
+                    <label>Temperatura a las 10:18 PM T(1) (°F):</label>
                     <input type="number" id="newton-t2" value="78.0" step="0.1">
                 </div>
                 <div class="input-group">
-                    <label>Error en T(2h) (±°F):</label>
+                    <label>Error en T(1) (±°F):</label>
                     <input type="number" id="newton-t2-error" value="0.1" step="0.01">
                 </div>
                 <div class="input-group">
@@ -355,7 +486,7 @@
             const resultsDiv = document.getElementById('carbon-results');
             resultsDiv.innerHTML = `
                 <div class="results">
-                    <h4>📊 Resultados del Análisis</h4>
+                    <h4>Resultados del Análisis</h4>
                     <div class="result-item">
                         <strong>Constante de decaimiento (k):</strong> ${k.toExponential(6)} años⁻¹
                     </div>
@@ -374,7 +505,7 @@
                 </div>
                 
                 <div class="error-analysis">
-                    <h4>🔍 Análisis de Propagación del Error</h4>
+                    <h4>Análisis de Propagación del Error</h4>
                     <p><strong>Derivada parcial ∂t/∂(ratio):</strong> ${dtdratio.toFixed(2)} años</p>
                     <p><strong>Derivada parcial ∂t/∂(vida media):</strong> ${dtdhalflife.toFixed(6)} años²</p>
                     <p><strong>Contribución del error en ratio:</strong> ±${Math.abs(dtdratio * ratioError).toFixed(0)} años</p>
@@ -385,32 +516,51 @@
         }
 
         function solveNewtonProblem() {
-            const T0 = parseFloat(document.getElementById('newton-t0').value);
-            const T0_error = parseFloat(document.getElementById('newton-t0-error').value);
-            const T1 = parseFloat(document.getElementById('newton-t1').value);
-            const T1_error = parseFloat(document.getElementById('newton-t1-error').value);
-            const T2 = parseFloat(document.getElementById('newton-t2').value);
-            const T2_error = parseFloat(document.getElementById('newton-t2-error').value);
-            const Ts = parseFloat(document.getElementById('newton-ts').value);
+            const T_normal = parseFloat(document.getElementById('newton-t0').value); // Temperatura normal del cuerpo (98.6°F)
+            const T_normal_error = parseFloat(document.getElementById('newton-t0-error').value);
+            const T0 = parseFloat(document.getElementById('newton-t1').value); // Temperatura a las 9:18 PM (79.5°F)
+            const T0_error = parseFloat(document.getElementById('newton-t1-error').value);
+            const T1 = parseFloat(document.getElementById('newton-t2').value); // Temperatura a las 10:18 PM (78.0°F)
+            const T1_error = parseFloat(document.getElementById('newton-t2-error').value);
+            const Ts = parseFloat(document.getElementById('newton-ts').value); // Temperatura ambiente (69°F)
             const Ts_error = parseFloat(document.getElementById('newton-ts-error').value);
 
-            // Determinar k usando las dos mediciones
+            // Determinar k usando las dos mediciones reales
             // T(1) = Ts + (T0 - Ts)e^(-k*1) => k = ln((T0-Ts)/(T1-Ts))
             const k = Math.log((T0 - Ts) / (T1 - Ts));
             
-            // Verificar consistencia con T(2)
-            const T2_predicted = Ts + (T0 - Ts) * Math.exp(-k * 2);
+            // Calcular el tiempo de muerte real
+            // Necesitamos encontrar cuándo T(t) = T_normal = 98.6°F
+            // T_normal = Ts + (T0 - Ts)e^(-k*t_death)
+            // (T_normal - Ts) = (T0 - Ts)e^(-k*t_death)
+            // e^(-k*t_death) = (T_normal - Ts)/(T0 - Ts)
+            // -k*t_death = ln((T_normal - Ts)/(T0 - Ts))
+            // t_death = -ln((T_normal - Ts)/(T0 - Ts))/k
             
-            // Para encontrar el tiempo de muerte, necesitamos resolver cuando T = T0
-            // Tiempo transcurrido desde la muerte hasta la primera medición
-            // Si asumimos que la muerte ocurrió cuando T = T0, entonces:
-            // El tiempo de muerte sería: tiempo_actual - tiempo_transcurrido
+            const t_death = -Math.log((T_normal - Ts) / (T0 - Ts)) / k;
             
-            // Asumiendo que las mediciones se tomaron a las 9:18 PM y 10:18 PM
-            // y que queremos saber cuándo murió (cuando T = T0 = 98.6°F)
+            // Convertir a horas y minutos
+            const hours_death = Math.floor(t_death);
+            const minutes_death = Math.round((t_death - hours_death) * 60);
             
-            // Para el cálculo del error, usamos propagación
-            // k depende de T0, T1, Ts
+            // Calcular el tiempo de muerte real
+            const death_hour = 21 - hours_death; // 21 = 9 PM
+            const death_minute = 18 - minutes_death;
+            let final_hour = death_hour;
+            let final_minute = death_minute;
+            
+            if (final_minute < 0) {
+                final_minute += 60;
+                final_hour -= 1;
+            }
+            if (final_hour < 0) {
+                final_hour += 24;
+            }
+            
+            const timeOfDeath = `${final_hour}:${final_minute.toString().padStart(2, '0')} PM`;
+            
+            // Para el cálculo del error en k, usamos propagación
+            // k = ln((T0-Ts)/(T1-Ts))
             // dk/dT0 = 1/(T0-Ts)
             const dkdT0 = 1 / (T0 - Ts);
             // dk/dT1 = -1/(T1-Ts)
@@ -420,17 +570,26 @@
             
             const k_error = Math.abs(dkdT0 * T0_error) + Math.abs(dkdT1 * T1_error) + Math.abs(dkdTs * Ts_error);
             
-            // Estimación del tiempo de muerte
-            // Si T0 era la temperatura normal del cuerpo, el tiempo transcurrido desde la muerte
-            // hasta que se enfrió a T1 es aproximadamente 1 hora antes de la primera medición
+            // Error en el tiempo de muerte
+            // t_death = -ln((T_normal - Ts)/(T0 - Ts))/k
+            // dt_death/dT_normal = -1/(k*(T_normal - Ts))
+            const dtdT_normal = -1 / (k * (T_normal - Ts));
+            // dt_death/dT0 = 1/(k*(T0 - Ts))
+            const dtdT0 = 1 / (k * (T0 - Ts));
+            // dt_death/dTs = 1/(k*(T_normal - Ts)) - 1/(k*(T0 - Ts))
+            const dtdTs = 1/(k * (T_normal - Ts)) - 1/(k * (T0 - Ts));
+            // dt_death/dk = ln((T_normal - Ts)/(T0 - Ts))/k^2
+            const dtdk = Math.log((T_normal - Ts) / (T0 - Ts)) / (k * k);
             
-            const hoursBeforeDeath = 1; // Estimación basada en el enfriamiento observado
-            const timeOfDeath = "8:18 PM"; // Una hora antes de la primera medición
+            const t_death_error = Math.abs(dtdT_normal * T_normal_error) + 
+                                 Math.abs(dtdT0 * T0_error) + 
+                                 Math.abs(dtdTs * Ts_error) + 
+                                 Math.abs(dtdk * k_error);
             
             const resultsDiv = document.getElementById('newton-results');
             resultsDiv.innerHTML = `
                 <div class="results">
-                    <h4>📊 Resultados del Análisis Forense</h4>
+                    <h4>Resultados del Análisis Forense</h4>
                     <div class="result-item">
                         <strong>Constante de enfriamiento (k):</strong> ${k.toFixed(6)} h⁻¹
                     </div>
@@ -438,40 +597,42 @@
                         <strong>Error en k:</strong> ±${k_error.toFixed(6)} h⁻¹
                     </div>
                     <div class="result-item">
-                        <strong>Temperatura predicha a las 2h:</strong> ${T2_predicted.toFixed(1)}°F
+                        <strong>Tiempo transcurrido desde la muerte:</strong> ${t_death.toFixed(2)} horas
                     </div>
                     <div class="result-item">
-                        <strong>Temperatura medida a las 2h:</strong> ${T2}°F
+                        <strong>Error en tiempo de muerte:</strong> ±${t_death_error.toFixed(2)} horas
                     </div>
                     <div class="result-item">
-                        <strong>Diferencia:</strong> ${Math.abs(T2_predicted - T2).toFixed(1)}°F
+                        <strong>Tiempo estimado de muerte:</strong> ${timeOfDeath}
                     </div>
                     <div class="result-item">
-                        <strong>Tiempo estimado de muerte:</strong> Aproximadamente ${timeOfDeath}
+                        <strong>Rango de incertidumbre:</strong> ±${(t_death_error * 60).toFixed(0)} minutos
                     </div>
                 </div>
                 
                 <div class="error-analysis">
-                    <h4>🔍 Análisis de Propagación del Error</h4>
-                    <p><strong>∂k/∂T0:</strong> ${dkdT0.toFixed(6)} h⁻¹/°F</p>
-                    <p><strong>∂k/∂T1:</strong> ${dkdT1.toFixed(6)} h⁻¹/°F</p>
-                    <p><strong>∂k/∂Ts:</strong> ${dkdTs.toFixed(6)} h⁻¹/°F</p>
+                    <h4>Análisis de Propagación del Error</h4>
+                    <p><strong>∂k/∂T0 (temperatura 9:18 PM):</strong> ${dkdT0.toFixed(6)} h⁻¹/°F</p>
+                    <p><strong>∂k/∂T1 (temperatura 10:18 PM):</strong> ${dkdT1.toFixed(6)} h⁻¹/°F</p>
+                    <p><strong>∂k/∂Ts (temperatura ambiente):</strong> ${dkdTs.toFixed(6)} h⁻¹/°F</p>
                     <p><strong>Contribución de error de T0:</strong> ±${Math.abs(dkdT0 * T0_error).toFixed(6)} h⁻¹</p>
                     <p><strong>Contribución de error de T1:</strong> ±${Math.abs(dkdT1 * T1_error).toFixed(6)} h⁻¹</p>
                     <p><strong>Contribución de error de Ts:</strong> ±${Math.abs(dkdTs * Ts_error).toFixed(6)} h⁻¹</p>
-                    <p><strong>El modelo es consistente:</strong> ${Math.abs(T2_predicted - T2) < 1 ? 'Sí' : 'No'} (diferencia < 1°F)</p>
+                    <p><strong>∂t_death/∂T_normal:</strong> ${dtdT_normal.toFixed(6)} h/°F</p>
+                    <p><strong>Contribución de error de T_normal:</strong> ±${Math.abs(dtdT_normal * T_normal_error).toFixed(2)} h</p>
                 </div>
                 
                 <div class="formula">
                     <strong>Interpretación Forense:</strong><br>
                     Basándose en la ley de enfriamiento de Newton y considerando la propagación del error,
-                    el tiempo de muerte se estima entre ${timeOfDeath} ± ${(k_error/k * 60).toFixed(0)} minutos.
+                    el tiempo de muerte se estima en ${timeOfDeath} ± ${(t_death_error * 60).toFixed(0)} minutos.
                     La precisión del método depende críticamente de la exactitud de las mediciones de temperatura.
+                    <br><br>
+                    <strong>Fórmula utilizada:</strong> t_death = -ln((T_normal - Ts)/(T0 - Ts))/k
                 </div>
             `;
         }
 
-        // Mostrar menú al cargar la página
         showMenu();
     </script>
 </body>
